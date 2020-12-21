@@ -60,7 +60,7 @@ object q1
         |select distinct all.productId,
         |case when procuredValue+maxMargin < min(price) over (partition by ProductId) then procuredValue+maxMargin
         |     when procuredValue+minMargin < min(price) over (partition by ProductId) then min(price) over (partition by ProductId)
-        |     when procuredValue < min(price) over (partition by ProductId) and saleEvent='Special' then min(price) over (partition by ProductId)
+        |     when procuredValue < min(p rice) over (partition by ProductId) and saleEvent='Special' then min(price) over (partition by ProductId)
         |     when min(price) over (partition by ProductId) < procuredValue and saleEvent='Special' and netValue='VeryHigh' then ( procuredValue * 0.9 )
         |else procuredValue
         |end as  final_Price,
